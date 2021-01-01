@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_security import SQLAlchemyUserDatastore
 
-from .extensions import db, login_manager, security
+from .extensions import db, login_manager, security, admin
 from .models import User, Role
 from .utils import get_random_color
 
@@ -20,5 +20,7 @@ db.init_app(app)
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security.init_app(app, user_datastore)
+
+admin.init_app(app)
 
 from . import routes
