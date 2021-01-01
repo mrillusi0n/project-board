@@ -1,0 +1,9 @@
+{% extends 'admin/master.html' %}
+
+{% block title %}Admin | Project Board{% endblock title %}
+
+{% block head_css %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='assets/favicon.ico') }}" type="image/x-icon">
+{% endblock head_css %}
