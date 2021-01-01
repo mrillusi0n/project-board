@@ -29,6 +29,10 @@ def assign_student_roles(db, role_id):
 		user = User.query.filter_by(username=student.username).first()
 		db.session.add(UserRole(user_id=user.id, role_id=role_id))
 
+def make_admin(db, username):
+	user = User.query.filter_by(username=username).first()
+	db.session.add(UserRole(user_id=user.id, role_id=1))
+
 def assign_mentor_roles(db, role_id):
 	for mentor in Mentor.query.all():
 		user = User.query.filter_by(username=mentor.username).first()
