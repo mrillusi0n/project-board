@@ -40,7 +40,6 @@ class UserRole(db.Model):
 	role_id = Column(Integer(), db.ForeignKey('roles.id'))
 
 
-
 class Student(db.Model):
 	__tablename__ = 'students'
 	id = Column(Integer(), primary_key=True)
@@ -74,5 +73,5 @@ class Team(db.Model):
 	members = db.relationship('Student', backref='team', lazy=True)
 
 	def __repr__(self):
-		return f'Team: {self.team_id}'
+		return f'Team: {self.name}'
 	
