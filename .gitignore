@@ -1,0 +1,8 @@
+.vscode/
+
+flask-env/
+
+*.pyc
+*.db
+
+.DS_Store

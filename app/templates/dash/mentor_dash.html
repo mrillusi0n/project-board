@@ -1,0 +1,25 @@
+{% extends "dash/dash.html" %}
+{% block content %}
+
+{% include 'navbar.html' %}
+
+<header>
+  <h1 class="batch dash-title">Teams</h1>
+</header>
+
+<div class="cards">
+  {% for team in teams %}
+  <div class="card">
+    <h1 style="color: {{ get_random_color() }};" class="card__title">{{ team.name }}</h1>
+    <div class="student-heads">
+    {% for student in team.members %}
+      <div class="circle" data-attribute="{{ student.name }}">
+        <div style="background: {{ get_random_color() }};" class="student-image"></div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

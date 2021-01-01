@@ -1,0 +1,25 @@
+{% extends "dash/dash.html" %}
+
+{% block content %}
+
+{% include 'navbar.html' %}
+
+<header>
+  <h1 class="batch">Team <span>{{ team.name }}</span></h1>
+  <p class="mentor">Mentored by <span>{{ team.mentor.name }}</span></p>
+</header>
+
+<div class="cards">
+  {% for student in team.members %}
+  <div class="card card--student" id="{{ student.usn }}">
+    <h2 class="name">{{ student.name }}</h2>
+    <h2 class="usn">[{{ student.usn }}]</h2>
+  </div>
+  {% endfor %}
+</div>
+
+<script>
+  const userCard = document.getElementById('{{ student.usn }}');
+  userCard.classList.add('user-card');
+</script>
+{% endblock %}
