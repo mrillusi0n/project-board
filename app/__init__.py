@@ -19,18 +19,20 @@ def create_app():
 
 	db.init_app(app)
 
-	from .models import User, Role, Student, Mentor
-	from .admin_views import RestrictedAdminView
+	from .models import User, Role, Student, Mentor, Team
 
 	user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 	security.init_app(app, user_datastore)
 
 	admin.init_app(app)
 
+	from .admin_views import RestrictedAdminView
+
 	admin.add_view(RestrictedAdminView(User, db.session))
 	admin.add_view(RestrictedAdminView(Role, db.session))
 	admin.add_view(RestrictedAdminView(Student, db.session))
 	admin.add_view(RestrictedAdminView(Mentor, db.session))
+	admin.add_view(RestrictedAdminView(Team, db.session))
 
 	return app
 
