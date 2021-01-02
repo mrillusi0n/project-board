@@ -32,6 +32,9 @@ class Role(db.Model, RoleMixin):
 	id = Column(Integer(), primary_key=True)
 	name = Column(String(16), unique=True)
 
+	def __repr__(self):
+		return self.name
+
 
 class UserRole(db.Model):
 	__tablename__ = 'user_roles'
@@ -49,7 +52,7 @@ class Student(db.Model):
 	team_id = Column(Integer(), db.ForeignKey('teams.id'))
 
 	def __repr__(self):
-		return f'Student: {self.usn}'
+		return f'{self.name} ({self.usn})'
 
 
 class Mentor(db.Model):
@@ -61,7 +64,7 @@ class Mentor(db.Model):
 	teams = db.relationship('Team', backref='mentor', lazy=True)
 
 	def __repr__(self):
-		return f'Mentor: {self.mentor_id}'
+		return f'{self.name} ({self.mentor_id})'
 
 
 class Team(db.Model):
@@ -73,5 +76,5 @@ class Team(db.Model):
 	members = db.relationship('Student', backref='team', lazy=True)
 
 	def __repr__(self):
-		return f'Team: {self.name}'
+		return f'{self.name}'
 	
